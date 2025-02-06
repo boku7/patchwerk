@@ -6,10 +6,9 @@ Cobalt Strike BOF that finds all the `Nt*` system call stubs within `NTDLL` and 
 + Has custom `GetModuleHandle` & `GetProcAddress` (`getSymbolAddress`) written in C and ASM to evade hooks on `kernel32`.
 + If patching table of current process, does not use `NtOpenProcess`. Just uses `hProc = (HANDLE)-1;` instead.
 
-![](patchwerk.jpg)
+![](patchwerk.png)
 
 ## Usage
-Running `patchwerk` from beacon CLI will patch NTDLL of the current process.
 ```
 beacon> patchwerk 6115
 [*] Patchwerk (Bobby Cooke|@0xBoku|github.com/boku7}
@@ -18,7 +17,7 @@ beacon> patchwerk 6115
 Patching NTDLL System Call Stubs in Process: 6115 (PID)
 ...
 ```
-- Set pid to `0` for self patching.
+- Run `patchwerk` without the PID to patch current process
 
 ## Demo
 Running `patchwerk 311`, where `311` is the PID of a remote process, will patch ntdll of the remote process.
